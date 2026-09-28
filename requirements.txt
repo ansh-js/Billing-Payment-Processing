@@ -1,0 +1,2 @@
+# JavaScript project. Runtime dependencies are declared in source-code/backend/package.json
+# PostgreSQL 15+ is required.

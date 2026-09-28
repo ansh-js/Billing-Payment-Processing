@@ -1,0 +1,3 @@
+# Performance Analysis
+
+The baseline analysis starts with `EXPLAIN ANALYZE` in `sample_queries.sql`. `idx_payments_status_date` supports the common successful-payment recent-list query; `idx_invoices_open_due` is a smaller partial index used by overdue work queues; `idx_invoices_customer_date` supports a customer's chronological ledger. The full-text GIN customer index supports search without scanning all customer rows. Indexes reduce read latency at the cost of disk, vacuum work, and slower writes. Capture before/after plans with production-like data in `results/query-performance/`; do not claim timings from an unrun environment.

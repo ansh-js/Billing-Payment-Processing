@@ -1,0 +1,2 @@
+import express from 'express';import cors from 'cors';import 'dotenv/config';import auth from './routes/auth.js';import api from './routes/api.js';
+const app=express();app.use(cors());app.use(express.json());app.get('/health',(_,res)=>res.json({status:'ok'}));app.use('/api/auth',auth);app.use('/api',api);app.use((err,req,res,next)=>{console.error(err);res.status(err.code==='23505'?409:400).json({error:'Request could not be processed'})});app.listen(process.env.PORT||5001,()=>console.log('API running'));
